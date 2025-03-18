@@ -1,0 +1,124 @@
+sql_databse:
+	To store information systematically in structured manner.
+
+Terminology:
+
+	1.Database
+	2.table
+	3.column
+	4.Row	
+	5.Primary Key
+	6.Foreign Key
+	7.Compound Key
+	8.Index
+	9.Redundancy
+	
+command to check mysql version: 
+	mysqladmin --version
+	:mysqladmin  Ver 8.0.36-0ubuntu0.20.04.1 for Linux on x86_64 ((Ubuntu))
+	
+login set:mysqladmin -u root password "1234"
+
+1.login:root@lpz-ee212839:/home/ee212839# mysql -u root -p
+
+2.mysql> use Dark;
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+3.mysql> show tables;
++----------------+
+| Tables_in_Dark |
++----------------+
+| names          |
++----------------+
+1 row in set (0.00 sec)
+
+4.mysql> use Side;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+5.mysql> show tables;
++----------------+
+| Tables_in_Side |
++----------------+
+| names          |
++----------------+
+1 row in set (0.00 sec)
+
+6.mysql> select * from names;
++-------+----------+---------------+--------------------+-------+
+| empid | name     | phone         | email              | blood |
++-------+----------+---------------+--------------------+-------+
+|   123 | Ranjan   | +916636354657 | ran@gmail.com      | O     |
+|   124 | Dhanush  | +916362812906 | dan@gmail.com      | A     |
+|   125 | Saurabh  | +919483502121 | lopy@gmail.com     | B     |
+|   126 | Kedar    | +916845097812 | chotu@gmail.com    | A     |
+|   127 | kulli    | +919019784771 | kulli@petkammi.com | B+    |
+|   128 | Nihal    | +919019784771 | manga@pedambu.com  | A+    |
+|   129 | Kiran    | +91987654321  | kir@gmail.com      | A+    |
+|   131 | Bahubali | +916365478907 | bb@gmail.com       | O+    |
++-------+----------+---------------+--------------------+-------+
+8 rows in set (0.00 sec)
+
+7.mysql> use Dark;
+
+8.mysql> show Tables;
++----------------+
+| Tables_in_Dark |
++----------------+
+| names          |
++----------------+
+1 row in set (0.00 sec)
+
+9.mysql> show columns from names;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| empid | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| phone | varchar(13) | YES  |     | NULL    |       |
+| email | varchar(20) | YES  |     | NULL    |       |
+| blood | varchar(5)  | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+10.mysql> insert into names (empid,name,phone,email,blood) values (130,'hanuman','+916789123456','hanuman@gmail.com','o+');
+Query OK, 1 row affected (0.01 sec)
+
+11.mysql> select * from names;
++-------+---------+---------------+--------------------+-------+
+| empid | name    | phone         | email              | blood |
++-------+---------+---------------+--------------------+-------+
+|   124 | Dhanush | +916362812906 | dan@gmail.com      | A     |
+|   125 | Saurabh | +919483502123 | loopy@gmail.com    | O     |
+|   126 | Kedar   | +916845097812 | chotu@gmail.com    | A     |
+|   127 | Kavya   | +919019784771 | kulli@petkammi.com | B+    |
+|   128 | Nihal   | +91987654321  | manga@pedambu.com  | A+    |
+|   129 | Kiran   | +91987654321  | kir@gmail.com      | A+    |
+|   130 | Kishore | +919482437658 | kishu@gmail.com    | O     |
+|   123 | Ranjan  | +916636354657 | ran@gmail.com      | O     |
+|   132 | Jaiswal | +916463879087 | jai@gamil.com      | B+    |
+|   130 | hanuman | +916789123456 | hanuman@gmail.com  | o+    |
++-------+---------+---------------+--------------------+-------+
+10 rows in set (0.01 sec)
+
+12.mysql> select empid, name, phone from names where empid = 124;
++-------+---------+---------------+
+| empid | name    | phone         |
++-------+---------+---------------+
+|   124 | Dhanush | +916362812906 |
++-------+---------+---------------+
+1 row in set (0.00 sec)
+
+All Privileges:
+
+
+
+
+
+
