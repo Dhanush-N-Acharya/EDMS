@@ -194,8 +194,8 @@ int main()
 	int rc;
     	pthread_t tid;
     	pthread_t threads[NUM_OPTIONS];
-    	int val = 1;
-    	/*
+    	//int val = 1;
+    	
 	initscr();
 	cbreak();
 	noecho();
@@ -208,9 +208,9 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	pthread_join(threads[1], &val);
-	endwin();*/
-	//int *result = (int*)val;
-	int *result = &val;
+	endwin();
+	int *result = (int*)val;
+	//int *result = &val;
 	if(*result == 1)
 	{
 	enableRawMode();
@@ -318,7 +318,7 @@ make:
 				disableRawMode();
 				printf("\033[0;32mENTER THE EMPLOYEE ID:\n\033[0m");   
 				scanf("%[^\n]%*c",buffer); 
-				sprintf(data,"SELECT * FROM names WHERE empid = %s",buffer);
+				sprintf(data,"SELECT * FROM employees WHERE empid = %s",buffer);
 				enableRawMode();
 				if (mysql_query(conn, data)) 
 				{
