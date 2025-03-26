@@ -211,8 +211,8 @@ int main()
 	int rc;
     	pthread_t tid;
     	pthread_t threads[NUM_OPTIONS];
-    	int val = 1;
-    	/*
+    	//int val = 1;
+    	
 	initscr();
 	cbreak();
 	noecho();
@@ -225,9 +225,9 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	pthread_join(threads[1], &val);
-	endwin();*/
-	//int *result = (int*)val;
-	int *result = &val;
+	endwin();
+	int *result = (int*)val;
+	//int *result = &val;
 	if(*result == 1)
 	{
 	enableRawMode();
@@ -360,7 +360,7 @@ make:
 					kill(pid, SIGTERM);		
 				}
 
-				sprintf(data,"SELECT * FROM names WHERE empid = %s",some_data.empid);
+				sprintf(data,"SELECT * FROM employees WHERE empid = %s",some_data.empid);
 				mysql_query(conn, data);
 				res = mysql_store_result(conn);
 				row = mysql_fetch_row(res);

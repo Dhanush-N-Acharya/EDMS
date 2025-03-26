@@ -124,7 +124,7 @@ int sql_database(char* db_name,char* who)
 			{
 				printf("Error connecting to database: %s\n", mysql_error(conn));
 			}
-			sprintf(sql_query, "SELECT * FROM names WHERE empid = %d",empid);
+			sprintf(sql_query, "SELECT * FROM employees WHERE empid = %d",empid);
 			mysql_query(conn, sql_query);
 			res = mysql_use_result(conn);
 			if((row = mysql_fetch_row(res)) == NULL)
@@ -141,7 +141,7 @@ int sql_database(char* db_name,char* who)
 				printf("ENTER BLOOD GROUP:\n");
 				scanf("%s",blood);
 
-				sprintf(sql_query, "INSERT INTO names (empid, name, phone, email, blood) VALUES ('%d', '%s','%s','%s','%s')", empid, name, phone, email, blood);
+				sprintf(sql_query, "INSERT INTO employees (empid, name, phone, email, blood) VALUES ('%d', '%s','%s','%s','%s')", empid, name, phone, email, blood);
 
 				mysql_query(conn, sql_query);
 
@@ -163,7 +163,7 @@ int sql_database(char* db_name,char* who)
                 	disableRawMode();
 			printf("ENTER THE EMPID TO BE DELETED:\n");
 			scanf("%d", &emp_id);
-			sprintf(sql_query, "DELETE FROM names WHERE empid='%d'", emp_id);
+			sprintf(sql_query, "DELETE FROM employees WHERE empid='%d'", emp_id);
 			mysql_query(conn, sql_query);	
 			printf("ROW DELETED.\n");
 			enableRawMode();
@@ -173,7 +173,7 @@ int sql_database(char* db_name,char* who)
                 case 2:
                 	system("clear");
                 	moveCursorTo(0,0);
-                	sprintf(sql_query, "SELECT * FROM names");
+                	sprintf(sql_query, "SELECT * FROM employees");
 			mysql_query(conn, sql_query);
 			res = mysql_use_result(conn);
 			printf("--------------------------------------------------------\n");
